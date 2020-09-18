@@ -1,14 +1,15 @@
 import React from 'react';
 import AddInfo from './AddInfo'
+import { TextField } from '@material-ui/core';
 
-const Hero = ({handleLogout}, {email}) => {
+const Hero = ({ handleLogout }, { email }) => {
 
-    console.log({email});
+    console.log({ email });
 
-    return(
+    return (
         <section className="hero">
             <nav>
-            <h2>Welcome</h2>
+                <h2>Welcome</h2>
                 <button onClick={handleLogout}>Logout</button>
             </nav>
 

@@ -7,9 +7,11 @@ import fire from "./fire";
 
 class AddInfo extends Component {
     state = {
-        name: "",
-        table: "",
-        location: "",
+        PersonName: "",
+        TeamName: "",
+        Contact: "",
+        Location: "",
+        TableNumber: "",
         filled: 1
       };
     
@@ -20,59 +22,98 @@ class AddInfo extends Component {
       };
     
       handleSubmit = e => {
-        fire
-          .database()
-          .ref("Customers")
-          .orderByKey()
-          .limitToLast(100);
+        
         fire
           .database()
           .ref("Customers")
           .push(this.state);
-    
-        Swal.fire(
-          "Thanks For Subscribing!",
-          "You will now recieve our weekly newsletter!",
-          "success"
-        );
+
+        fire
+          .database()
+          .ref("Customers").once("child_added", function(snap) {
+            console.log("added:", snap.key);
+
+            Swal.fire(
+              "Booking Created!",
+              "Unique ID = " + snap.key,
+              "success"
+            );
+
+          });  
     
         this.setState({
-            name: "",
-            table: "",
-            location: "",
-            filled: 1
+          PersonName: "",
+          TeamName: "",
+          Contact: "",
+          Location: "",
+          TableNumber: "",
+          filled: 1
         });
       };
 
       render() {
 
         return(
-            <Grid container justify="center">
-                <form class="form" noValidate autoComplete="off">
+          <form>
+              <Grid container justify="center" style={{ padding: '20px' }}>
                 <Grid item xs={12} style={{ margin: '20px' }}>
                   <TextField
-                    className="field"
                     onChange={this.handleText}
-                    id="outlined-size-small"
                     label="Customer Name"
                     fullWidth
-                    name="name"
+                    required
+                    name="PersonName"
                     size="small"
                     variant="outlined"
-                    value={this.state.name}
+                    value={this.state.PersonName}
                   />
                 </Grid>
                 <Grid item xs={12} style={{ margin: '20px' }}>
                   <TextField
-                    className="field"
                     onChange={this.handleText}
-                    id="outlined-size-small"
-                    label="Table Number"
+                    label="Team Name"
                     fullWidth
-                    name="table"
+                    required
+                    name="TeamName"
                     size="small"
                     variant="outlined"
-                    value={this.state.table}
+                    value={this.state.TeamName}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ margin: '20px' }}>
+                  <TextField
+                    onChange={this.handleText}
+                    label="Contact"
+                    fullWidth
+                    required
+                    name="Contact"
+                    size="small"
+                    variant="outlined"
+                    value={this.state.Contact}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ margin: '20px' }}>
+                  <TextField
+                    onChange={this.handleText}
+                    label="Location"
+                    fullWidth
+                    required
+                    name="Location"
+                    size="small"
+                    variant="outlined"
+                    value={this.state.Location}
+                  />
+                </Grid>
+                <Grid item xs={12} style={{ margin: '20px' }}>
+                  <TextField
+                    onChange={this.handleText}
+                    label="Table Number"
+                    fullWidth
+                    required
+                    name="TableNumber"
+                    size="small"
+                    variant="outlined"
+                    value={this.state.TableNumber}
                   />
                 </Grid>
                 <Grid item xs={12} style={{ margin: '20px' }}>
@@ -82,11 +123,11 @@ class AddInfo extends Component {
                     color="secondary"
                     onClick={this.handleSubmit}
                   >
-                    Add
+                    Book Table
                   </Button>
                 </Grid>
-                </form>
-            </Grid>
+              </Grid>
+            </form>
         );
       }
 }

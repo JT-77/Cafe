@@ -51,8 +51,8 @@ constructor(props) {
         <div>
         {(this.state.click) ? (
             <div>
-            <p>Welcome {this.state.data.name}</p>
-              <UserBetting uid={this.state.uid} table={this.state.data.table} />
+            <p>Welcome {this.state.data.PersonName}</p>
+              <UserBetting uid={this.state.uid} />
             </div>
         ) : (
         <Grid container justify="center">
