@@ -9,7 +9,8 @@ class AddInfo extends Component {
     state = {
         name: "",
         table: "",
-        location: ""
+        location: "",
+        filled: 1
       };
     
       handleText = (event) => {
@@ -38,7 +39,8 @@ class AddInfo extends Component {
         this.setState({
             name: "",
             table: "",
-            location: ""
+            location: "",
+            filled: 1
         });
       };
 

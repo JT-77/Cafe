@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import fire from './fire'
+import UserBetting from './UserBetting' 
 
 class Guest extends Component {
 
@@ -48,7 +49,10 @@ constructor(props) {
     return (
         <div>
         {(this.state.click) ? (
+            <div>
             <p>Welcome {this.state.data.name}</p>
+              <UserBetting uid={this.state.uid} />
+            </div>
         ) : (
         <Grid container justify="center">
         <Grid item xs={12} style={{ margin: '20px' }}>
