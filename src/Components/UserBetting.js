@@ -9,12 +9,12 @@ function UserBetting({ uid }) {
 
     const [state, setState] = React.useState({
         betting: "",
-        fill: 1,
         playing: ""
     })
 
     const handleText = (event) => {
         setState({
+            ...state,
             [event.target.name]: event.target.value
         });
     };
@@ -23,7 +23,7 @@ function UserBetting({ uid }) {
         fire
             .database()
             .ref("Customers/" + uid)
-            .on('value', snapshot => {
+            .once('value', snapshot => {
                 console.log(snapshot.val())
 
                 //update database here
@@ -39,52 +39,41 @@ function UserBetting({ uid }) {
         fire
             .database()
             .ref("Customers/" + uid)
-            .on('value', snapshot => {
-                console.log(snapshot.val().filled)
+            .once('value', snapshot => {
 
-                setState({
-                    fill: snapshot.val().filled
-                })
+                let items = snapshot.val();
+
+
+                if (items.filled) {
+                    console.log("jatin");
+                    fire
+                        .database()
+                        .ref("Customers/" + uid)
+                        .push(state);
+
+                    UpdateFilled();
+
+                    Swal.fire(
+                        "Thanks For Betting!",
+                        "You will now recieve our weekly newsletter!",
+                        "success"
+                    );
+                }
+                else {
+                    Swal.fire(
+                        "OOPS",
+                        "Bet already placed",
+                        "error"
+                    );
+
+                    window.location = "/guest";
+                }
             });
-
-        console.log(state.fill)
-
-        fire
-            .database()
-            .ref("Customers/" + uid)
-            .push(state,json());
-
-        UpdateFilled();
-
-        /*if (fill) {
-            fire
-                .database()
-                .ref("Customers/" + uid)
-                .push(state);
-
-            UpdateFilled();
-
-            Swal.fire(
-                "Thanks For Betting!",
-                "You will now recieve our weekly newsletter!",
-                "success"
-            );
-        }
-        else {
-            Swal.fire(
-                "OOPS",
-                "Bet already placed",
-                "error"
-            );
-
-            window.location = "/guest";
-        }*/
 
         setState({
             betting: "",
-            fill: 1,
             playing: ""
-        });
+        })
 
     };
 

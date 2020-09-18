@@ -34,6 +34,7 @@ constructor(props) {
               data: snapshot.val()
           })   
     });
+    
   } 
 
   handleSubmit = e => {
@@ -51,7 +52,7 @@ constructor(props) {
         {(this.state.click) ? (
             <div>
             <p>Welcome {this.state.data.name}</p>
-              <UserBetting uid={this.state.uid} />
+              <UserBetting uid={this.state.uid} table={this.state.data.table} />
             </div>
         ) : (
         <Grid container justify="center">
