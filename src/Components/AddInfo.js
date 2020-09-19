@@ -36,7 +36,7 @@ class AddInfo extends Component {
             Swal.fire(
               "Booking Created!",
               "Unique ID = " + snap.key,
-              "success"
+              "info"
             );
 
           });  

@@ -59,20 +59,22 @@ function UserBetting({ uid }) {
 
                     UpdateFilled();
 
-                    Swal.fire(
-                        "Thank You for your response!",
-                        "Hope you get it right ;)",
-                        "success"
-                    );
+                    Swal.fire({
+                        icon: "success",
+                        title: "Thank You for your response!",
+                        text: "Hope you get it right ;)"
+                    }).then(function() {
+                        window.location = "/";
+                    });
                 }
                 else {
-                    Swal.fire(
-                        "OOPS",
-                        "Bet already placed",
-                        "error"
-                    );
-
-                    window.location = "";
+                    Swal.fire({
+                        icon: "error",
+                        title: "OOPS",
+                        text: "Bet already placed"
+                    }).then(function() {
+                        window.location = "/";
+                    });
                 }
             });
 
@@ -90,8 +92,8 @@ function UserBetting({ uid }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <Grid container spacing={5} justify="center" style={{ padding: '20px' }}>
+        <form>
+            <Grid container justify="center" style={{ padding: '20px' }}>
                 <Grid item xs={12}>
                     <InputLabel htmlFor="choice1" placeholder="Choose anyone between 1-5 over" required>Prediction Over</InputLabel>
                     <NativeSelect id="choice1" name="choice1" required={true}
@@ -161,7 +163,7 @@ function UserBetting({ uid }) {
                         className="submit"
                         variant="contained"
                         color="secondary"
-                        type="submit"
+                        onClick={handleSubmit}
                     >
                         Place Bet
                   </Button>

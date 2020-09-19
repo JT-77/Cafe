@@ -30,7 +30,7 @@ constructor(props) {
     fire
       .database()
       .ref("Customers/" + this.state.uid)
-      .once('value', snapshot => {
+      .on('value', snapshot => {
           this.setState({
               data: snapshot.val()
           })   
