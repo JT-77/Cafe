@@ -6,8 +6,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import fire from './fire';
-import Swal from 'sweetalert2'
-import Hero from './Hero';
+import AdminPanel from './AdminPanel';
 
 
 function Login() {
@@ -89,12 +88,12 @@ function Login() {
   return (
     <div>
       { user ? (
-        <Hero handleLogout={handleLogout} email={user.email} />
+        <AdminPanel handleLogout={handleLogout} />
       ) : (
 
-          <Grid container justify="space-around">
-            <Grid item xs={12} md={6} style={{ alignSelf: 'center' }}>
-              <div className="inputFields">
+          <Grid container justify="space-around" align="center">
+            <Grid item xs={12} md={6}>
+              <div>
 
                 <Grid container spacing={3} style={{ padding: '7px' }}>
                   <Grid item xs={12}>
@@ -133,7 +132,7 @@ function Login() {
               </div>
 
               <div className="logBtn">
-                <button onClick={handleLogin}>Sign In</button>
+                <Button variant="contained" color="primary" onClick={handleLogin}>Sign In</Button>
               </div>
             </Grid>
           </Grid>

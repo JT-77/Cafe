@@ -72,7 +72,7 @@ function UserBetting({ uid }) {
                         "error"
                     );
 
-                    window.location = "/guest";
+                    window.location = "";
                 }
             });
 
@@ -90,7 +90,7 @@ function UserBetting({ uid }) {
     };
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <Grid container spacing={5} justify="center" style={{ padding: '20px' }}>
                 <Grid item xs={12}>
                     <InputLabel htmlFor="choice1" placeholder="Choose anyone between 1-5 over" required>Prediction Over</InputLabel>
@@ -156,12 +156,12 @@ function UserBetting({ uid }) {
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction4"
                         onChange={handleText} value={state.prediction4} fullWidth required />
                 </Grid>
-                <Grid item xs={12} style={{ margin: '20px' }}>
+                <Grid item xs={12} style={{ padding: '20px' }}>
                     <Button
                         className="submit"
                         variant="contained"
                         color="secondary"
-                        onClick={handleSubmit}
+                        type="submit"
                     >
                         Place Bet
                   </Button>

@@ -25,21 +25,16 @@ constructor(props) {
     });
   };
 
-  addValues = () => {
+  handleSubmit = e => {
+
     fire
       .database()
       .ref("Customers/" + this.state.uid)
-      .on('value', snapshot => {
+      .once('value', snapshot => {
           this.setState({
               data: snapshot.val()
           })   
     });
-    
-  } 
-
-  handleSubmit = e => {
-
-    this.addValues()
 
     this.setState({
         click: 1

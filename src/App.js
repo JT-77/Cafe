@@ -9,8 +9,8 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/admin" component={Login} />
-          <Route exact path="/guest" component={Guest} />
-          <Redirect to="/guest" />
+          <Route exact path="" component={Guest} />
+          <Redirect to="" />
         </Switch>
       </div>
     </BrowserRouter>
