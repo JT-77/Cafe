@@ -87,53 +87,49 @@ function Login() {
 
   return (
     <div>
-      { user ? (
+      {user ? (
         <AdminPanel handleLogout={handleLogout} />
       ) : (
 
-          <Grid container justify="space-around" align="center">
-            <Grid item xs={12} md={6}>
-              <div>
-
-                <Grid container spacing={3} style={{ padding: '7px' }}>
-                  <Grid item xs={12}>
-                    <TextField label="Email" name="username"
-                      value={state.username}
-                      id="email"
-                      onChange={handleChange}
-                      type="email" fullWidth required
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <AccountCircle style={{ color: '#767676' }} />
-                          </InputAdornment>
-                        ),
-                      }} />
-                    <p className="error">{state.emerror}</p>
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <TextField id="input-with-icon-grid" label="Password"
-                      name="password"
-                      value={state.password}
-                      onChange={handleChange}
-                      id="password"
-                      type="password" required fullWidth
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <LockIcon style={{ color: '#767676' }} />
-                          </InputAdornment>
-                        ),
-                      }} />
-                    <p className="error">{state.paserror}</p>
-                  </Grid>
+          <Grid container style={{ justifyContent: 'center', height: '100vh' }}>
+            <Grid item xs={12} md={4} style={{ padding: '7px', alignSelf: 'center' }}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <TextField label="Email" name="username"
+                    value={state.username}
+                    id="email"
+                    onChange={handleChange}
+                    type="email" fullWidth required
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircle style={{ color: '#767676' }} />
+                        </InputAdornment>
+                      ),
+                    }} />
+                  <p className="error">{state.emerror}</p>
                 </Grid>
-              </div>
 
-              <div className="logBtn">
-                <Button variant="contained" color="primary" onClick={handleLogin}>Sign In</Button>
-              </div>
+                <Grid item xs={12}>
+                  <TextField id="input-with-icon-grid" label="Password"
+                    name="password"
+                    value={state.password}
+                    onChange={handleChange}
+                    id="password"
+                    type="password" required fullWidth
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <LockIcon style={{ color: '#767676' }} />
+                        </InputAdornment>
+                      ),
+                    }} />
+                  <p className="error">{state.paserror}</p>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="contained" color="primary" onClick={handleLogin}>Sign In</Button>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
 

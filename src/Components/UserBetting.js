@@ -55,7 +55,7 @@ function UserBetting({ uid }) {
                     fire
                         .database()
                         .ref("Customers/" + uid)
-                        .push(state);
+                        .update(state);
 
                     UpdateFilled();
 
@@ -94,9 +94,9 @@ function UserBetting({ uid }) {
     return (
         <form>
             <Grid container justify="center" style={{ padding: '20px' }}>
-                <Grid item xs={12}>
-                    <InputLabel htmlFor="choice1" placeholder="Choose anyone between 1-5 over" required>Prediction Over</InputLabel>
-                    <NativeSelect id="choice1" name="choice1" required={true}
+                <Grid item xs={12} style={{ padding: '20px' }}>
+                    <InputLabel htmlFor="choice1" placeholder="Choose anyone between 1-5 over">Prediction Over</InputLabel>
+                    <NativeSelect id="choice1" name="choice1" 
                         value={state.choice1} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 1-5 over</option>
                         <option value="1st Over">1st Over</option>
@@ -106,13 +106,13 @@ function UserBetting({ uid }) {
                         <option value="5th Over">5th Over</option>
                     </NativeSelect>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction1"
-                        onChange={handleText} value={state.prediction1} fullWidth required />
+                        onChange={handleText} value={state.prediction1} fullWidth />
                 </Grid>
-                <Grid item xs={12}>
-                    <InputLabel htmlFor="choice2" placeholder="Choose anyone between 6-10 over" required>Prediction Over</InputLabel>
-                    <NativeSelect id="choice2" name="choice2" required={true}
+                <Grid item xs={12} style={{ padding: '20px' }}>
+                    <InputLabel htmlFor="choice2" placeholder="Choose anyone between 6-10 over">Prediction Over</InputLabel>
+                    <NativeSelect id="choice2" name="choice2" 
                         value={state.choice2} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 6-10 over</option>
                         <option value="6th Over">6th Over</option>
@@ -122,13 +122,13 @@ function UserBetting({ uid }) {
                         <option value="10th Over">10th Over</option>
                     </NativeSelect>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction2"
-                        onChange={handleText} value={state.prediction2} fullWidth required />
+                        onChange={handleText} value={state.prediction2} fullWidth />
                 </Grid>
-                <Grid item xs={12}>
-                    <InputLabel htmlFor="choice3" placeholder="Choose anyone between 11-15 over" required>Prediction Over</InputLabel>
-                    <NativeSelect id="choice3" name="choice3" required={true}
+                <Grid item xs={12} style={{ padding: '20px' }}>
+                    <InputLabel htmlFor="choice3" placeholder="Choose anyone between 11-15 over">Prediction Over</InputLabel>
+                    <NativeSelect id="choice3" name="choice3" 
                         value={state.choice3} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 11-15 over</option>
                         <option value="11th Over">11th Over</option>
@@ -138,13 +138,13 @@ function UserBetting({ uid }) {
                         <option value="15th Over">15th Over</option>
                     </NativeSelect>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction3"
-                        onChange={handleText} value={state.prediction3} fullWidth required />
+                        onChange={handleText} value={state.prediction3} fullWidth />
                 </Grid>
-                <Grid item xs={12}>
-                    <InputLabel htmlFor="choice4" placeholder="Choose anyone between 15-20 over" required>Prediction Over</InputLabel>
-                    <NativeSelect id="choice4" name="choice4" required={true}
+                <Grid item xs={12} style={{ padding: '20px' }}>
+                    <InputLabel htmlFor="choice4" placeholder="Choose anyone between 15-20 over">Prediction Over</InputLabel>
+                    <NativeSelect id="choice4" name="choice4" 
                         value={state.choice4} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 15-20 over</option>
                         <option value="16th Over">16th Over</option>
@@ -154,9 +154,9 @@ function UserBetting({ uid }) {
                         <option value="20th Over">20th Over</option>
                     </NativeSelect>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction4"
-                        onChange={handleText} value={state.prediction4} fullWidth required />
+                        onChange={handleText} value={state.prediction4} fullWidth />
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <Button

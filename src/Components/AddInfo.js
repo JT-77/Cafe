@@ -61,7 +61,6 @@ class AddInfo extends Component {
                     onChange={this.handleText}
                     label="Customer Name"
                     fullWidth
-                    required
                     name="PersonName"
                     size="small"
                     variant="outlined"
@@ -73,7 +72,6 @@ class AddInfo extends Component {
                     onChange={this.handleText}
                     label="Team Name"
                     fullWidth
-                    required
                     name="TeamName"
                     size="small"
                     variant="outlined"
@@ -85,7 +83,6 @@ class AddInfo extends Component {
                     onChange={this.handleText}
                     label="Contact"
                     fullWidth
-                    required
                     name="Contact"
                     size="small"
                     variant="outlined"
@@ -97,7 +94,6 @@ class AddInfo extends Component {
                     onChange={this.handleText}
                     label="Location"
                     fullWidth
-                    required
                     name="Location"
                     size="small"
                     variant="outlined"
@@ -109,7 +105,6 @@ class AddInfo extends Component {
                     onChange={this.handleText}
                     label="Table Number"
                     fullWidth
-                    required
                     name="TableNumber"
                     size="small"
                     variant="outlined"

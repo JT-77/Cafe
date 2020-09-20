@@ -46,12 +46,13 @@ constructor(props) {
         <div>
         {(this.state.click) ? (
             <div>
-            <p>Welcome {this.state.data.PersonName}</p>
+            <h2 style={{ paddingLeft: '10px' }}>Welcome {this.state.data.PersonName}</h2>
+            <p style={{ paddingLeft: '10px' }}><i>(Note: This form can be submitted only once so choose wisely!)</i></p>
               <UserBetting uid={this.state.uid} />
             </div>
         ) : (
         <Grid container justify="center">
-        <Grid item xs={12} style={{ margin: '20px' }}>
+        <Grid item xs={12} style={{ padding: '20px' }}>
           <TextField
             className="field"
             onChange={this.handleText}
@@ -64,7 +65,7 @@ constructor(props) {
             value={this.state.uid}
           />
         </Grid>
-        <Grid item xs={12} style={{ margin: '20px' }}>
+        <Grid item xs={12} style={{ padding: '20px' }}>
           <Button
             className="submit"
             variant="contained"
