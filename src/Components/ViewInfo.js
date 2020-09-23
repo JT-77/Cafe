@@ -13,7 +13,7 @@ class ViewInfo extends Component {
     }
 
     componentDidMount() {
-        fire.database().ref("Customers").on('value', snapshot => {
+        fire.database().ref("Customers").once('value', snapshot => {
             console.log(snapshot.val())
             let list = []
 

@@ -30,7 +30,7 @@ class AddInfo extends Component {
 
         fire
           .database()
-          .ref("Customers").once("child_added", function(snap) {
+          .ref("Customers").endAt().limitToLast(1).once("child_added", function(snap) {
             console.log("added:", snap.key);
 
             Swal.fire(
