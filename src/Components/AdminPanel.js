@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import ViewInfo from './ViewInfo';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import MatchDetails from './MatchDetails';
 
 function TabPanel(props) {
     const { children, value, index } = props;
@@ -44,18 +45,21 @@ function AdminPanel({ handleLogout }) {
             </Grid>
 
             <Grid container>
-                <Grid item xs={12} style={{ padding: '30px' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="admin-tabs" className="admin-tabs" >
-                    <Tab label="Add Customers" />
-                    <Tab label="View Customers" />
-                </Tabs>
+                <Grid item xs={12} style={{ padding: '20px' }}>
+                    <MatchDetails />
+                </Grid>
+                <Grid item xs={12} style={{ padding: '20px' }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="admin-tabs" className="admin-tabs" >
+                        <Tab label="Add Customers" />
+                        <Tab label="View Customers" />
+                    </Tabs>
 
-                <TabPanel value={value} index={0}>
-                    <AddInfo />
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    <ViewInfo />
-                </TabPanel>
+                    <TabPanel value={value} index={0}>
+                        <AddInfo />
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        <ViewInfo />
+                    </TabPanel>
                 </Grid>
             </Grid>
         </div>

@@ -9,7 +9,7 @@ class AddInfo extends Component {
     state = {
         PersonName: "",
         TeamName: "",
-        Contact: "",
+        Contact: null,
         Location: "",
         TableNumber: "",
         filled: 1
@@ -26,7 +26,8 @@ class AddInfo extends Component {
         fire
           .database()
           .ref("Customers")
-          .push(this.state);
+          .child(this.state.Contact)
+          .set(this.state);
 
         fire
           .database()
@@ -55,11 +56,12 @@ class AddInfo extends Component {
 
         return(
           <form>
-              <Grid container justify="center" style={{ padding: '20px' }}>
+              <Grid container justify="center">
                 <Grid item xs={12} style={{ margin: '20px' }}>
                   <TextField
                     onChange={this.handleText}
                     label="Customer Name"
+                    placeholder="Customer Name"
                     fullWidth
                     name="PersonName"
                     size="small"
@@ -71,6 +73,7 @@ class AddInfo extends Component {
                   <TextField
                     onChange={this.handleText}
                     label="Team Name"
+                    placeholder="Team Name"
                     fullWidth
                     name="TeamName"
                     size="small"
@@ -83,6 +86,7 @@ class AddInfo extends Component {
                     onChange={this.handleText}
                     label="Contact"
                     fullWidth
+                    placeholder="Contact"
                     name="Contact"
                     size="small"
                     variant="outlined"
@@ -93,6 +97,7 @@ class AddInfo extends Component {
                   <TextField
                     onChange={this.handleText}
                     label="Location"
+                    placeholder="Location"
                     fullWidth
                     name="Location"
                     size="small"
@@ -104,6 +109,7 @@ class AddInfo extends Component {
                   <TextField
                     onChange={this.handleText}
                     label="Table Number"
+                    placeholder="Table Number"
                     fullWidth
                     name="TableNumber"
                     size="small"
