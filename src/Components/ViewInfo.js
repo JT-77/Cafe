@@ -51,7 +51,7 @@ class ViewInfo extends Component {
     render() {
         return (
             <Grid container>
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ marginTop: '20px' }}>
                     <TextField variant="outlined" name="filter" label="Enter Match Number" value={this.state.filter} style={{ float: 'right' }} onChange={this.handleText} />
                 </Grid>
                 <Grid item xs={12} style={{ overflowX: 'auto', marginTop: '20px' }}>
