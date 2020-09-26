@@ -8,6 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import fire from './fire'
+import Swal from "sweetalert2";
 
 class MatchDetails extends Component {
     constructor(props) {
@@ -18,7 +19,8 @@ class MatchDetails extends Component {
             team2: '',
             match: null,
             open: false,
-            area: ''
+            area: '',
+            current: ''
         }
 
     }
@@ -30,10 +32,12 @@ class MatchDetails extends Component {
                 console.log(snap.val())
 
                 var info = 'Match Number: ' + snap.val().match + '\n' + snap.val().team1 + ' vs ' + snap.val().team2;
+                var curr = snap.val().match
 
                 this.setState({
-                    area: info
-                }) 
+                    area: info,
+                    current: curr
+                })
             });
     }
 
@@ -57,14 +61,25 @@ class MatchDetails extends Component {
 
     handleSubmit = e => {
 
-        fire
-            .database()
-            .ref("Matches")
-            .child(this.state.match)
-            .set(this.state);
+        if (this.state.match < this.state.current) {
+            this.handleClose();
+            
+            Swal.fire({
+                icon: "error",
+                title: "OOPS",
+                text: "Match number is incorrect!"
+            });
+        }
+        else {
+            fire
+                .database()
+                .ref("Matches")
+                .child(this.state.match)
+                .set(this.state);
 
-        this.handleClose();
-        this.componentDidMount();
+            this.handleClose();
+            this.componentDidMount();
+        }
     };
 
     render() {

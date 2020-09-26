@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Grid from '@material-ui/core/Grid';
 import '../App.css'
 
-class ViewInfo extends Component {
+class ViewInfo2 extends Component {
 
     constructor(props) {
         super(props);
@@ -44,6 +44,10 @@ class ViewInfo extends Component {
         });
     };
 
+    handleFilter = () => {
+        this.componentDidMount();
+    }
+
     render() {
         return (
             <Grid container>
@@ -77,14 +81,14 @@ class ViewInfo extends Component {
                                             <td>{data.TableNumber}</td>
                                             <td>{data.Location}</td>
                                             <td>{data.Contact}</td>
-                                            <td>{data.choice1}</td>
-                                            <td>{data.prediction1}</td>
-                                            <td>{data.choice2}</td>
-                                            <td>{data.prediction2}</td>
-                                            <td>{data.choice3}</td>
-                                            <td>{data.prediction3}</td>
-                                            <td>{data.choice4}</td>
-                                            <td>{data.prediction4}</td>
+                                            <td>{data.choice5}</td>
+                                            <td>{data.prediction5}</td>
+                                            <td>{data.choice6}</td>
+                                            <td>{data.prediction6}</td>
+                                            <td>{data.choice7}</td>
+                                            <td>{data.prediction7}</td>
+                                            <td>{data.choice8}</td>
+                                            <td>{data.prediction8}</td>
                                         </tr>
                                     );
                             })}
@@ -96,4 +100,4 @@ class ViewInfo extends Component {
     }
 }
 
-export default ViewInfo;
+export default ViewInfo2;

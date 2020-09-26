@@ -12,7 +12,8 @@ class AddInfo extends Component {
     Contact: null,
     Location: "",
     TableNumber: "",
-    filled: 1,
+    filled1: 1,
+    filled2: 1,
     match: ""
   };
 
@@ -63,7 +64,8 @@ class AddInfo extends Component {
       Contact: "",
       Location: "",
       TableNumber: "",
-      filled: 1
+      filled1: 1,
+      filled2: 1
     });
   };
 

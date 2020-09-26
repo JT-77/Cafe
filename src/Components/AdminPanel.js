@@ -2,10 +2,10 @@ import React from 'react';
 import AddInfo from './AddInfo';
 import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import ViewInfo from './ViewInfo';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import MatchDetails from './MatchDetails';
+import CombinedView from './CombinedView'
 
 function TabPanel(props) {
     const { children, value, index } = props;
@@ -58,7 +58,7 @@ function AdminPanel({ handleLogout }) {
                         <AddInfo />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        <ViewInfo />
+                        <CombinedView />
                     </TabPanel>
                 </Grid>
             </Grid>
