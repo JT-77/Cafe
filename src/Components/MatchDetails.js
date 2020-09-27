@@ -29,7 +29,6 @@ class MatchDetails extends Component {
         fire
             .database()
             .ref("Matches").endAt().limitToLast(1).once("child_added", snap => {
-                console.log(snap.val())
 
                 var info = 'Match Number: ' + snap.val().match + '\n' + snap.val().team1 + ' vs ' + snap.val().team2;
                 var curr = snap.val().match

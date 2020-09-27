@@ -27,7 +27,6 @@ class AddInfo extends Component {
     fire
       .database()
       .ref("Matches").endAt().limitToLast(1).on("child_added", snap => {
-        console.log(snap.val())
 
         var info = snap.val().match;
 
@@ -39,17 +38,14 @@ class AddInfo extends Component {
 
   handleSubmit = e => {
 
+    e.preventDefault();
+
     fire
       .database()
       .ref("Customers")
       .child(this.state.Contact)
       .set(this.state);
 
-    /*fire
-      .database()
-      .ref("Customers").endAt().limitToLast(1).once("child_added", function (snap) {
-        console.log("added:", snap.key);
-    */
         Swal.fire(
           "Booking Created!",
           "Unique ID = " + this.state.Contact,
@@ -72,7 +68,7 @@ class AddInfo extends Component {
   render() {
 
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <Grid container justify="center">
           <Grid item xs={12} style={{ margin: '20px' }}>
             <TextField
@@ -84,6 +80,7 @@ class AddInfo extends Component {
               size="small"
               variant="outlined"
               value={this.state.PersonName}
+              required
             />
           </Grid>
           <Grid item xs={12} style={{ margin: '20px' }}>
@@ -96,6 +93,7 @@ class AddInfo extends Component {
               size="small"
               variant="outlined"
               value={this.state.TeamName}
+              required
             />
           </Grid>
           <Grid item xs={12} style={{ margin: '20px' }}>
@@ -108,6 +106,7 @@ class AddInfo extends Component {
               size="small"
               variant="outlined"
               value={this.state.Contact}
+              required
             />
           </Grid>
           <Grid item xs={12} style={{ margin: '20px' }}>
@@ -120,6 +119,7 @@ class AddInfo extends Component {
               size="small"
               variant="outlined"
               value={this.state.Location}
+              required
             />
           </Grid>
           <Grid item xs={12} style={{ margin: '20px' }}>
@@ -132,6 +132,7 @@ class AddInfo extends Component {
               size="small"
               variant="outlined"
               value={this.state.TableNumber}
+              required
             />
           </Grid>
           <Grid item xs={12} style={{ margin: '20px' }}>
@@ -139,10 +140,10 @@ class AddInfo extends Component {
               className="submit"
               variant="contained"
               color="secondary"
-              onClick={this.handleSubmit}
+              type="submit"
             >
               Book Table
-                  </Button>
+            </Button>
           </Grid>
         </Grid>
       </form>

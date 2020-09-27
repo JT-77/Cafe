@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import fire from './fire';
-import TextField from "@material-ui/core/TextField";
 import Grid from '@material-ui/core/Grid';
 import '../App.css'
 
@@ -10,14 +9,13 @@ class ViewInfo2 extends Component {
         super(props);
 
         this.state = {
-            info: [],
-            filter: ""
+            info: []
         }
     }
 
     componentDidMount() {
         fire.database().ref("Customers").once('value', snapshot => {
-            console.log(snapshot.val())
+
             let list = []
 
             snapshot.forEach(snap => {
@@ -26,16 +24,6 @@ class ViewInfo2 extends Component {
 
             this.setState({ info: list })
         })
-
-        fire
-            .database()
-            .ref("Matches").endAt().limitToLast(1).once("child_added", snap => {
-                var inf = snap.val().match;
-
-                this.setState({
-                    filter: inf
-                })
-            });
     }
 
     handleText = (event) => {
@@ -44,16 +32,9 @@ class ViewInfo2 extends Component {
         });
     };
 
-    handleFilter = () => {
-        this.componentDidMount();
-    }
-
     render() {
         return (
             <Grid container>
-                <Grid item xs={12} style={{ marginTop: '20px' }}>
-                    <TextField variant="outlined" name="filter" label="Enter Match Number" value={this.state.filter} style={{ float: 'right' }} onChange={this.handleText} />
-                </Grid>
                 <Grid item xs={12} style={{ overflowX: 'auto', marginTop: '20px' }}>
                     <table>
                         <thead class="thead-dark">
@@ -74,7 +55,7 @@ class ViewInfo2 extends Component {
                         </thead>
                         <tbody>
                             {this.state.info.map(data => {
-                                if (this.state.filter == data.match)
+                                if (this.props.match == data.match)
                                     return (
                                         <tr>
                                             <td>{data.PersonName}</td>

@@ -35,7 +35,7 @@ class Guest extends Component {
       uid: '',
       dis: true,
       click: 0,
-      data: {},
+      data: [],
       value: 0,
       team1: '',
       team2: '',
@@ -43,23 +43,6 @@ class Guest extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentDidMount() {
-    fire
-      .database()
-      .ref("Matches").endAt().limitToLast(1).once("child_added", snap => {
-
-        var t1 = snap.val().team1;
-        var t2 = snap.val().team2;
-        var curr = snap.val().match;
-
-        this.setState({
-          team1: t1,
-          team2: t2,
-          num: curr
-        })
-      });
   }
 
   handleChange = (event, index) => {
@@ -75,20 +58,38 @@ class Guest extends Component {
     });
   };
 
+  handleUpdate(i) {
+    fire
+      .database()
+      .ref("Matches/" + i).once("value", snap => {
+
+        var t1 = snap.val().team1;
+        var t2 = snap.val().team2;
+        var curr = snap.val().match;
+
+        this.setState({
+          team1: t1,
+          team2: t2,
+          num: curr
+        })
+      });
+  }
+
   handleSubmit = e => {
 
     fire
       .database()
       .ref("Customers/" + this.state.uid)
-      .on('value', snapshot => {
-        this.setState({
-          data: snapshot.val()
-        })
+      .once('value', snapshot => {
+
+        this.handleUpdate(snapshot.val().match)
+
+        this.setState({ data: snapshot.val() })
       });
 
-    this.setState({
-      click: 1
-    });
+      this.setState({
+        click: 1
+      });
   };
 
   render() {

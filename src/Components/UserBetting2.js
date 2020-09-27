@@ -31,8 +31,6 @@ function UserBetting2({ uid }) {
             .database()
             .ref("Customers/" + uid)
             .once('value', snapshot => {
-                console.log(snapshot.val())
-
                 //update database here
                 fire.database().ref("Customers")
                     .child(uid).update({
@@ -42,6 +40,8 @@ function UserBetting2({ uid }) {
     }
 
     const handleSubmit = e => {
+
+        e.preventDefault();
 
         fire
             .database()
@@ -92,11 +92,11 @@ function UserBetting2({ uid }) {
     };
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <Grid container justify="center">
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <InputLabel htmlFor="choice5" placeholder="Choose anyone between 1-5 over">Prediction Over</InputLabel>
-                    <NativeSelect id="choice5" name="choice5" 
+                    <NativeSelect id="choice5" name="choice5" required={true}
                         value={state.choice5} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 1-5 over</option>
                         <option value="1st Over">1st Over</option>
@@ -108,11 +108,11 @@ function UserBetting2({ uid }) {
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction5"
-                        onChange={handleText} value={state.prediction5} fullWidth />
+                        onChange={handleText} value={state.prediction5} fullWidth required />
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <InputLabel htmlFor="choice6" placeholder="Choose anyone between 6-10 over">Prediction Over</InputLabel>
-                    <NativeSelect id="choice6" name="choice6" 
+                    <NativeSelect id="choice6" name="choice6" required={true}
                         value={state.choice6} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 6-10 over</option>
                         <option value="6th Over">6th Over</option>
@@ -124,11 +124,11 @@ function UserBetting2({ uid }) {
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction6"
-                        onChange={handleText} value={state.prediction6} fullWidth />
+                        onChange={handleText} value={state.prediction6} fullWidth required />
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <InputLabel htmlFor="choice7" placeholder="Choose anyone between 11-15 over">Prediction Over</InputLabel>
-                    <NativeSelect id="choice7" name="choice7" 
+                    <NativeSelect id="choice7" name="choice7" required={true}
                         value={state.choice7} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 11-15 over</option>
                         <option value="11th Over">11th Over</option>
@@ -140,11 +140,11 @@ function UserBetting2({ uid }) {
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction7"
-                        onChange={handleText} value={state.prediction7} fullWidth />
+                        onChange={handleText} value={state.prediction7} fullWidth required />
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <InputLabel htmlFor="choice8" placeholder="Choose anyone between 15-20 over">Prediction Over</InputLabel>
-                    <NativeSelect id="choice8" name="choice8" 
+                    <NativeSelect id="choice8" name="choice8" required={true}
                         value={state.choice8} onChange={handleText} fullWidth>
                         <option value="" disabled>Choose anyone between 15-20 over</option>
                         <option value="16th Over">16th Over</option>
@@ -156,14 +156,14 @@ function UserBetting2({ uid }) {
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <TextField label="Enter your Prediction Here" variant="outlined" size="small" name="prediction8"
-                        onChange={handleText} value={state.prediction8} fullWidth />
+                        onChange={handleText} value={state.prediction8} fullWidth required />
                 </Grid>
                 <Grid item xs={12} style={{ padding: '20px' }}>
                     <Button
                         className="submit"
                         variant="contained"
                         color="secondary"
-                        onClick={handleSubmit}
+                        type="submit"
                     >
                         Place Bet
                   </Button>
