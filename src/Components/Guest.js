@@ -4,9 +4,11 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Swal from "sweetalert2";
 import fire from './fire'
 import UserBetting from './UserBetting'
 import UserBetting2 from './UserBetting2'
+import Loader from './Loader'
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -82,14 +84,27 @@ class Guest extends Component {
       .ref("Customers/" + this.state.uid)
       .once('value', snapshot => {
 
-        this.handleUpdate(snapshot.val().match)
+        if (!snapshot.val()) {
+          Swal.fire({
+            icon: "error",
+            title: "OOPS",
+            text: "Wrong Unique ID!"
+          }).then(function () {
+            window.location = "/";
+          });
+        }
 
-        this.setState({ data: snapshot.val() })
+        else {
+
+          this.handleUpdate(snapshot.val().match)
+
+          this.setState({ data: snapshot.val() })
+        }
       });
 
-      this.setState({
-        click: 1
-      });
+    this.setState({
+      click: 1
+    });
   };
 
   render() {
@@ -97,10 +112,11 @@ class Guest extends Component {
       <div>
         {(this.state.click) ? (
           <div>
+            <Loader />
             <h2 style={{ paddingLeft: '10px' }}>Welcome {this.state.data.PersonName}</h2>
             <p style={{ paddingLeft: '10px' }}><i>(Note: You can predict only once for each team so choose wisely!)</i></p>
             <Grid container style={{ padding: '20px' }}>
-              <Grid item xs={12} style={{ padding: '20px' }}>
+              <Grid item xs={12}>
                 <p>Match Number: {this.state.num}</p>
               </Grid>
               <Grid item xs={12}>

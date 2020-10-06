@@ -35,6 +35,7 @@ class ViewInfo extends Component {
                             <tr>
                                 <th>Name</th>
                                 <th>Table Number</th>
+                                <th>Team Name</th>
                                 <th>Location</th>
                                 <th>Contact</th>
                                 <th>Choice1</th>
@@ -54,6 +55,7 @@ class ViewInfo extends Component {
                                         <tr>
                                             <td>{data.PersonName}</td>
                                             <td>{data.TableNumber}</td>
+                                            <td>{data.TeamName}</td>
                                             <td>{data.Location}</td>
                                             <td>{data.Contact}</td>
                                             <td>{data.choice1}</td>

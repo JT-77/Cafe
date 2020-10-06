@@ -88,7 +88,7 @@ function Login() {
   return (
     <div>
       {user ? (
-        <AdminPanel handleLogout={handleLogout} />
+          <AdminPanel handleLogout={handleLogout} />
       ) : (
 
           <Grid container style={{ justifyContent: 'center', height: '100vh' }}>
